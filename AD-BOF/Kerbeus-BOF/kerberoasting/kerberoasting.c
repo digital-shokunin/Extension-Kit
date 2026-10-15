@@ -604,7 +604,10 @@ void KERBEROAST_RUN( PCHAR Buffer, DWORD Length ) {
     }
 
     if ( nopreauth == NULL && ticket == NULL ) {
-        PRINT_OUT("\n[X] You must supply /nopreauth, /ticket or /credUser !\n\n");
+        // TODO: implement /credUser + /credPassword — requires extracting TGT
+        // acquisition from asktgt into a shared function (CreateEncKey, NewAS_REQ,
+        // HandleASREP have conflicting signatures between asktgt.c and kerberoasting.c)
+        PRINT_OUT("\n[X] You must supply /nopreauth or /ticket !\n\n");
         return;
     }
 
